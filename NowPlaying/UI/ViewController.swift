@@ -10,20 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
     var movies : [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIRequests.getNowPlaying(completionHandler: { myMovies in
-            
-            self.movies = myMovies
+        APIRequests.getNowPlaying(completionHandler: { [weak self] myMovies in
+            print(myMovies)
         })
        
-        APIRequests.getPoster(with: "/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg",completionHandler: { [weak self] (image:UIImage?) in
-            self?.imageView.image = image
-        })
+//        APIRequests.getPoster(with: "/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg",completionHandler: { [weak self] (image:UIImage?) in
+//            self?.imageView.image = image
+//        })
         
 //
 //        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=ddda5dbdc67ad28441e0cecfa7fe6e68&language=en-US&page=1")

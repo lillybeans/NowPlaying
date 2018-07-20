@@ -4,6 +4,6 @@ target 'NowPlaying' do
 
   use_frameworks!
 
-  pod 'CodableAlamofire'
+  pod 'Alamofire'
 
 end

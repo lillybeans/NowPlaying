@@ -15,6 +15,7 @@
 		E99911CC21016C8A00F3118C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99911CA21016C8A00F3118C /* LaunchScreen.storyboard */; };
 		E99911D42101777B00F3118C /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99911D32101777B00F3118C /* APIRequests.swift */; };
 		E99911D62101849E00F3118C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99911D52101849E00F3118C /* Movie.swift */; };
+		E99911D821020EEF00F3118C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99911D721020EEF00F3118C /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E99911CD21016C8A00F3118C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E99911D32101777B00F3118C /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
 		E99911D52101849E00F3118C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E99911D721020EEF00F3118C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,16 +84,41 @@
 		E99911C021016C8A00F3118C /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
-				E99911D52101849E00F3118C /* Movie.swift */,
-				E99911D32101777B00F3118C /* APIRequests.swift */,
+				E99911DB21020F2500F3118C /* UI */,
+				E99911DA21020F2000F3118C /* Models */,
+				E99911D921020F1800F3118C /* Networking */,
 				E99911C121016C8A00F3118C /* AppDelegate.swift */,
-				E99911C321016C8A00F3118C /* ViewController.swift */,
 				E99911C521016C8A00F3118C /* Main.storyboard */,
 				E99911C821016C8A00F3118C /* Assets.xcassets */,
 				E99911CA21016C8A00F3118C /* LaunchScreen.storyboard */,
 				E99911CD21016C8A00F3118C /* Info.plist */,
 			);
 			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		E99911D921020F1800F3118C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E99911D32101777B00F3118C /* APIRequests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E99911DA21020F2000F3118C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E99911D52101849E00F3118C /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E99911DB21020F2500F3118C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E99911C321016C8A00F3118C /* ViewController.swift */,
+				E99911D721020EEF00F3118C /* MovieCollectionViewCell.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,12 +218,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NowPlaying/Pods-NowPlaying-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -227,6 +252,7 @@
 			files = (
 				E99911C421016C8A00F3118C /* ViewController.swift in Sources */,
 				E99911D42101777B00F3118C /* APIRequests.swift in Sources */,
+				E99911D821020EEF00F3118C /* MovieCollectionViewCell.swift in Sources */,
 				E99911D62101849E00F3118C /* Movie.swift in Sources */,
 				E99911C221016C8A00F3118C /* AppDelegate.swift in Sources */,
 			);
