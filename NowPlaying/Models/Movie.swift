@@ -7,6 +7,7 @@
 //
 
 struct Movie : Codable {
+    let id: Double
     let title : String
     let overview : String
     let releaseDate : String
@@ -14,6 +15,7 @@ struct Movie : Codable {
     let posterPath : String
     
     private enum CodingKeys : String, CodingKey {
+        case id
         case title
         case overview
         case releaseDate = "release_date"

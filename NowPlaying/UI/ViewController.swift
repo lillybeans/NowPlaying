@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     var movies : [Movie] = []
     
     //Constants
@@ -30,13 +31,35 @@ class ViewController: UIViewController {
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         moviesCollectionView.contentInset = UIEdgeInsetsMake(insetY, insetX, insetY, insetX) //Top, left, bottom, right paddings
         
+        displayNowPlaying()
+       
+    }
+    
+    @IBAction func segmentControlTapped(_ sender: Any) {
+        switch (segmentControl.selectedSegmentIndex) {
+        case 0 :
+            displayNowPlaying()
+        case 1 :
+            displayTopRated()
+        default:
+            return
+        }
+    }
+    
+    func displayNowPlaying() {
         APIRequests.getNowPlaying(completionHandler: { [weak self] movies in
             self?.movies = movies
             self?.moviesCollectionView.reloadData()
         })
-       
     }
-
+    
+    func displayTopRated(){
+        APIRequests.getTopRated(completionHandler: { [weak self] movies in
+            self?.movies = movies
+            self?.moviesCollectionView.reloadData()
+        })
+    }
+    
 }
 
 extension ViewController: UICollectionViewDataSource {

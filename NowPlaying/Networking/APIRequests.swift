@@ -19,12 +19,22 @@ class APIRequests {
     static private let imageCache = NSCache<NSString, UIImage>()
     
     static func getNowPlaying(completionHandler: @escaping(([Movie]) -> ())){
-        let endpoint : String = "/movie/now_playing"
         let params : [String:Any] = ["api_key": API_KEY,
                                      "language": "en-US",
                                      "page": 1]
+        getMovies(endpoint: "/movie/now_playing", params: params, completionHandler: completionHandler)
+    }
+    
+    static func getTopRated(completionHandler: @escaping(([Movie]) -> ())){
+        let params : [String:Any] = ["api_key": API_KEY,
+                                     "language": "en-US",
+                                     "page": 1]
+        getMovies(endpoint: "/movie/top_rated", params: params, completionHandler: completionHandler)
+    }
+    
+    static func getMovies(endpoint: String, params: [String:Any], completionHandler: @escaping(([Movie]) -> ())){
         let decoder = JSONDecoder()
-
+        
         Alamofire.request(BASE_URL + endpoint, method: .get, parameters: params).responseJSON { (response) in
             //We only need to map a nested part of the response
             guard let response = response.result.value as? [String:Any],
