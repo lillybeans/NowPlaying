@@ -15,13 +15,14 @@ class ViewController: UIViewController {
     
     //Constants
     let movieCellReuseIdentifier = "MovieCell"
-    private let cellScaling : CGFloat = 0.6
+    private let cellHorizontalScaling : CGFloat = 0.7
+    private let cellVerticalScaling : CGFloat = 0.8
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cellWidth = view.bounds.width * cellScaling
-        let cellHeight = view.bounds.height * cellScaling
+        let cellWidth = view.bounds.width * cellHorizontalScaling
+        let cellHeight = view.bounds.height * cellVerticalScaling
         let insetX = (view.bounds.width - cellWidth) / 2
         let insetY = (view.bounds.height - cellHeight) / 2
         
