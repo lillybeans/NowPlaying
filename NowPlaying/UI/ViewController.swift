@@ -13,44 +13,45 @@ class ViewController: UIViewController {
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     var movies : [Movie] = []
     
+    //Constants
+    let movieCellReuseIdentifier = "MovieCell"
+    private let cellScaling : CGFloat = 0.6
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIRequests.getNowPlaying(completionHandler: { [weak self] myMovies in
-            print(myMovies)
+        let cellWidth = view.bounds.width * cellScaling
+        let cellHeight = view.bounds.height * cellScaling
+        let insetX = (view.bounds.width - cellWidth) / 2
+        let insetY = (view.bounds.height - cellHeight) / 2
+        
+        let layout = moviesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        moviesCollectionView.contentInset = UIEdgeInsetsMake(insetY, insetX, insetY, insetX) //Top, left, bottom, right paddings
+        
+        APIRequests.getNowPlaying(completionHandler: { [weak self] movies in
+            self?.movies = movies
+            self?.moviesCollectionView.reloadData()
         })
        
-//        APIRequests.getPoster(with: "/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg",completionHandler: { [weak self] (image:UIImage?) in
-//            self?.imageView.image = image
-//        })
-        
-//
-//        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=ddda5dbdc67ad28441e0cecfa7fe6e68&language=en-US&page=1")
-//        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-//            if error != nil {
-//                print(error!)
-//            } else {
-//                if let data = data {
-//                    do {
-//                        let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-//                        if let names = json["results"] as? [Any] {
-//                            print(names)
-//                        }
-//                    } catch let error as NSError {
-//                        print("Failed to load: \(error.localizedDescription)")
-//                    }
-//                }
-//            }
-//
-//        }
-//        task.resume()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+extension ViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
-
-
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: movieCellReuseIdentifier, for: indexPath) as! MovieCollectionViewCell
+        cell.movie = movies[indexPath.item]
+        return cell
+    }
 }
 
