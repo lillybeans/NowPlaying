@@ -21,12 +21,14 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     var movie : Movie? {
         didSet {
-            updateUI()
+            setupUI()
         }
     }
     
-    func updateUI(){
+    func setupUI(){
         guard let movie = movie else { return }
+        
+        favoriteOn = false
             
         APIRequests.getPoster(with: movie.posterPath,completionHandler: { [weak self] (image:UIImage?) in
             self?.posterImage.image = image
@@ -40,6 +42,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
         //Check if movie is favorited
         if UserDefaults.standard.object(forKey: "\(movie.id)") != nil {
             favoriteButton.setImage(UIImage(named: "heart-filled"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(named: "heart-empty"), for: .normal)
         }
     }
     
