@@ -16,7 +16,6 @@
 		E99911D42101777B00F3118C /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99911D32101777B00F3118C /* APIRequests.swift */; };
 		E99911D62101849E00F3118C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99911D52101849E00F3118C /* Movie.swift */; };
 		E99911D821020EEF00F3118C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99911D721020EEF00F3118C /* MovieCollectionViewCell.swift */; };
-		E99911DD210579C300F3118C /* UIView+Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99911DC210579C300F3118C /* UIView+Gradients.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		E99911D32101777B00F3118C /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
 		E99911D52101849E00F3118C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E99911D721020EEF00F3118C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
-		E99911DC210579C300F3118C /* UIView+Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradients.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +88,6 @@
 				E99911DA21020F2000F3118C /* Models */,
 				E99911D921020F1800F3118C /* Networking */,
 				E99911C121016C8A00F3118C /* AppDelegate.swift */,
-				E99911DC210579C300F3118C /* UIView+Gradients.swift */,
 				E99911C521016C8A00F3118C /* Main.storyboard */,
 				E99911C821016C8A00F3118C /* Assets.xcassets */,
 				E99911CA21016C8A00F3118C /* LaunchScreen.storyboard */,
@@ -136,7 +133,6 @@
 				E99911BB21016C8A00F3118C /* Frameworks */,
 				E99911BC21016C8A00F3118C /* Resources */,
 				68AEF78B17680C8D4A17F741 /* [CP] Embed Pods Frameworks */,
-				ECE9977534F3A5E4DD52F5D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,21 +227,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NowPlaying/Pods-NowPlaying-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ECE9977534F3A5E4DD52F5D8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NowPlaying/Pods-NowPlaying-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -257,7 +238,6 @@
 				E99911D42101777B00F3118C /* APIRequests.swift in Sources */,
 				E99911D821020EEF00F3118C /* MovieCollectionViewCell.swift in Sources */,
 				E99911D62101849E00F3118C /* Movie.swift in Sources */,
-				E99911DD210579C300F3118C /* UIView+Gradients.swift in Sources */,
 				E99911C221016C8A00F3118C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,7 +380,7 @@
 				DEVELOPMENT_TEAM = MJRHRMAPPB;
 				INFOPLIST_FILE = NowPlaying/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LillyTong.NowPlaying;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LillyTong.NowPlaying1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -416,7 +396,7 @@
 				DEVELOPMENT_TEAM = MJRHRMAPPB;
 				INFOPLIST_FILE = NowPlaying/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LillyTong.NowPlaying;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LillyTong.NowPlaying1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

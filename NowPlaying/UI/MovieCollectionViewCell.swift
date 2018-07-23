@@ -18,11 +18,22 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     
     var favoriteOn : Bool = false
+    var gradientLayer : CALayer?
     
     var movie : Movie? {
         didSet {
             setupUI()
         }
+    }
+    
+    override func layoutSubviews() {
+        //Need to adjust gradient layer size whenever poster image changes size
+        if gradientLayer?.bounds.size != posterImage.bounds.size {
+            gradientLayer?.removeFromSuperlayer() //if gradient is nil, this will not execute
+            gradientLayer = gradientFadeLayer(colorOne: .clear, colorTwo: UIColor.black)
+            posterImage.layer.insertSublayer(gradientLayer!, at: 0)
+        }
+        super.layoutSubviews()
     }
     
     func setupUI(){
@@ -32,7 +43,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         APIRequests.getPoster(with: movie.posterPath,completionHandler: { [weak self] (image:UIImage?) in
             self?.posterImage.image = image
-            self?.posterImage.applyGradientBackground(colorOne: UIColor.clear, colorTwo: UIColor.black.withAlphaComponent(0.7), location: 0.7)
         })
         
         titleLabel.text = movie.title
@@ -46,6 +56,16 @@ class MovieCollectionViewCell: UICollectionViewCell {
         } else {
             favoriteButton.setImage(UIImage(named: "heart-empty"), for: .normal)
         }
+    }
+    
+    //create a gradient overlay
+    func gradientFadeLayer(colorOne: UIColor, colorTwo: UIColor) -> CALayer{
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.locations = [0.3, 0.9]
+        
+        return gradientLayer
     }
     
     @IBAction func toggleFavorite(_ sender: Any) {

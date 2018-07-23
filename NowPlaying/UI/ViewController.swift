@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         let cellWidth = view.bounds.width * cellHorizontalScaling
         let cellHeight = view.bounds.height * cellVerticalScaling
         let insetX = (view.bounds.width - cellWidth) / 2
