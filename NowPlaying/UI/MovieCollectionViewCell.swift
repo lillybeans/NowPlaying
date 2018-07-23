@@ -29,9 +29,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         guard let movie = movie else { return }
         
         favoriteOn = false
-            
+        
         APIRequests.getPoster(with: movie.posterPath,completionHandler: { [weak self] (image:UIImage?) in
             self?.posterImage.image = image
+            self?.posterImage.applyGradientBackground(colorOne: UIColor.clear, colorTwo: UIColor.black.withAlphaComponent(0.7), location: 0.7)
         })
         
         titleLabel.text = movie.title
