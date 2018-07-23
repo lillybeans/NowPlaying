@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MovieCollectionViewController.swift
 //  NowPlaying
 //
 //  Created by Lilly Tong on 2018-07-19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MovieCollectionViewController: UIViewController {
 
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -16,19 +16,15 @@ class ViewController: UIViewController {
     
     //Constants
     let movieCellReuseIdentifier = "MovieCell"
-    private let cellHorizontalScaling : CGFloat = 0.7
-    private let cellVerticalScaling : CGFloat = 0.8
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        let cellWidth = view.bounds.width * cellHorizontalScaling
-        let cellHeight = view.bounds.height * cellVerticalScaling
+        let cellWidth = view.bounds.width * 0.7
+        let cellHeight = view.bounds.height * 0.8
         let insetX = (view.bounds.width - cellWidth) / 2
         let insetY = (view.bounds.height - cellHeight) / 2
         
-        let layout = moviesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         moviesCollectionView.contentInset = UIEdgeInsetsMake(insetY, insetX, insetY, insetX) //Top, left, bottom, right paddings
         
         displayNowPlaying()
@@ -62,7 +58,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension MovieCollectionViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -77,5 +73,17 @@ extension ViewController: UICollectionViewDataSource {
         cell.movie = movies[indexPath.item]
         return cell
     }
+    
 }
 
+extension MovieCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    //Recalculate layout when device orientation changes
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        moviesCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.bounds.width * 0.7, height: view.bounds.height * 0.8)
+    }
+}
